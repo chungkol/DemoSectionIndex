@@ -15,7 +15,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let tableVC = TableViewController()
+        tableVC.title = "Contacts"
+        
+        let navi = UINavigationController(rootViewController: tableVC)
+        // đổi màu chữ + font + size cho title bar
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor() , NSFontAttributeName: (UIFont.boldSystemFontOfSize(25))]
+        // đổi màu nav
+        UINavigationBar.appearance().barTintColor = UIColor.grayColor()
+        
+        // đổi màu status bar 
+        //* View controller-based status bar appearance Bool No
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
+        
+        self.window?.rootViewController = navi
+        
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
